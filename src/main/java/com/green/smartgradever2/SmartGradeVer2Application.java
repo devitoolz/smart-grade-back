@@ -21,7 +21,7 @@ public class SmartGradeVer2Application {
                 registry.addMapping("/**")
                         .allowedHeaders("*")
                         .allowedMethods("*")
-                        .allowedOrigins("https://web-smart-grade-2rrqq2blmpn233b.sel5.cloudtype.app");
+                        .allowedOrigins("*");
             }
         };
     }
