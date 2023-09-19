@@ -8,6 +8,9 @@ springboot:
     token-type: Bearer
 #DB
 spring:
+  data:
+    redis:
+      host: ${REDIS_HOST}
   servlet:
     multipart:
       max-file-size: 3MB
@@ -23,8 +26,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: qkqh970605@gmail.com
-    password: lbjwkwlsvbwwmcda
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -35,9 +38,9 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://192.168.0.144:3306/team_b
-    username: team_b
-    password: green502
+    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   #mybatisz
 
 
@@ -54,8 +57,8 @@ springdoc:
 
 #naver api 코드
 open-api:
-  client-id: 6c1d_wx2wYAf73bPpAhj
-  client-secret: Pe9NsHDIy6
+  client-id: ${NAVER_API_CLIENT_ID}
+  client-secret: ${NAVER_API_CLIENT_SECRET}
 
 
 
