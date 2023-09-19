@@ -29,7 +29,8 @@ public class SecurityConfiguration {
     /** 권한 설정 **/
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(authz ->
+        httpSecurity.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .authorizeHttpRequests(authz ->
                             authz.requestMatchers(
                                     "/"
                                     ,"/admin/**"
@@ -66,7 +67,6 @@ public class SecurityConfiguration {
                 ) //사용 권한 체크
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //세션 사용 X
         .httpBasic(http -> http.disable()) //UI 있는 시큐리티 설정을 비활성화
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable()) //CSRF 보안이 필요 X, 쿠키와 세션을 이용해서 인증을 하고 있기 때문에 발생하는 일, https://kchanguk.tistory.com/197
                 .exceptionHandling(except -> {
                     except.accessDeniedHandler(new CustomAccessDeniedHandler()); // 인가부분(권한)
@@ -82,6 +82,7 @@ public class SecurityConfiguration {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
+        configuration.setAllowedOrigins(Arrays.asList("https://web-smart-grade-2rrqq2blmpn233b.sel5.cloudtype.app"));
         configuration.setAllowedMethods(Arrays.asList("HEAD","POST","GET","DELETE","PUT"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
 
