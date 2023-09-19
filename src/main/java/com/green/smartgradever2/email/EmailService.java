@@ -60,7 +60,7 @@ public class EmailService {
         StringBuffer msg = new StringBuffer();
         msg.append("<html>");
         msg.append("<body>");
-        msg.append("<a href='https://port-0-smart-grade-back-2rrqq2blmpn233b.sel5.cloudtype.app'><img src='https://postfiles.pstatic.net/MjAyMzA5MDFfODQg/MDAxNjkzNTU1MDIzODIw.OOkMKxS_8VE4fyTJ9KBz97bOpjZJ6AED2dGplRpgaNQg.qOVC3dfhLZtF8RqSWgyKeGmpG-9jQoKgH7okuXI8Z6Ig.PNG.worud4227/Untitled-1.png?type=w966' /></a>");
+        msg.append("<a href='https://web-smart-grade-2rrqq2blmpn233b.sel5.cloudtype.app'><img src='https://postfiles.pstatic.net/MjAyMzA5MDFfODQg/MDAxNjkzNTU1MDIzODIw.OOkMKxS_8VE4fyTJ9KBz97bOpjZJ6AED2dGplRpgaNQg.qOVC3dfhLZtF8RqSWgyKeGmpG-9jQoKgH7okuXI8Z6Ig.PNG.worud4227/Untitled-1.png?type=w966' /></a>");
         msg.append("<hr>");
         msg.append("<h3>OTP 등록을 위한 메일입니다.</h3>");
         msg.append("<p>모든 등록절차는 구글 otp 검색 후 -> " + "<b>" + "Google Authenicator 어플" + "</b>" + "을 다운받으셔야 합니다.</p>");
@@ -69,7 +69,7 @@ public class EmailService {
         msg.append("<p style='margin:10px 0;'> * QR체크를 통해 등록을 원하시면 하단의 이미지로 등록을 하시면 됩니다.</p>");
         if (dto.getRole().equals("ROLE_STUDENT")) {
             entity = STUDENT_REP.findById(dto.getId()).get();
-            msg.append("<img src = " + entity.getOtpUrl() + ">");
+            msg.append("<img src = " + entity.getOtpUrl().replace("www.google.com", "chart.googleapis.com") + ">");
         } else if (dto.getRole().equals("ROLE_PROFESSOR")){
 
            professor = PROFESSOR_REP.findById(dto.getId()).get();
@@ -181,7 +181,7 @@ public class EmailService {
                 "    border-radius: 20px;\n" +
                 "    text-align: center;\n" +
                 "    margin: 50px auto;\n'>" +
-                "<a href='https://port-0-smart-grade-back-2rrqq2blmpn233b.sel5.cloudtype.app'><img src='https://postfiles.pstatic.net/MjAyMzA5MDFfODQg/MDAxNjkzNTU1MDIzODIw.OOkMKxS_8VE4fyTJ9KBz97bOpjZJ6AED2dGplRpgaNQg.qOVC3dfhLZtF8RqSWgyKeGmpG-9jQoKgH7okuXI8Z6Ig.PNG.worud4227/Untitled-1.png?type=w966' /></a>");
+                "<a href='https://web-smart-grade-2rrqq2blmpn233b.sel5.cloudtype.app'><img src='https://postfiles.pstatic.net/MjAyMzA5MDFfODQg/MDAxNjkzNTU1MDIzODIw.OOkMKxS_8VE4fyTJ9KBz97bOpjZJ6AED2dGplRpgaNQg.qOVC3dfhLZtF8RqSWgyKeGmpG-9jQoKgH7okuXI8Z6Ig.PNG.worud4227/Untitled-1.png?type=w966' /></a>");
         msg.append("<hr>");
         msg.append("<h1>이메일 인증을 위한 메일입니다.</h1>");
         msg.append("<p>본인이 아니시라면 메일 삭제를 해주시면 됩니다.</p>");
