@@ -64,7 +64,8 @@ open-api:
 
 
 file:
-  dir: /home/smartGradeVer2
+  dir: /app/smartGrade
+#  dir: /home/smartGradeVer2
 
 ---
 
