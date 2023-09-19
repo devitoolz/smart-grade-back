@@ -52,9 +52,8 @@ public class SecurityConfiguration {
                                     ,"/api/forget-password"
                                     ,"/api/change-password"
                             ).permitAll() // 권한 상관없이 전부 사용이 가능하다.
-                        //  .requestMatchers("/api/refresh-token").hasAnyRole("STUDENT", "PROFESSOR", "ADMIN") 다중 권한
+                            .requestMatchers("/api/refresh-token").hasAnyRole("STUDENT", "PROFESSOR", "ADMIN") // 다중 권한
                             .requestMatchers("/api/logout").hasAnyRole("STUDENT", "PROFESSOR", "ADMIN")
-
                             .requestMatchers(HttpMethod.GET, "/api/refresh-token").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/lectureroom/list").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/major/list").permitAll()
@@ -83,7 +82,7 @@ public class SecurityConfiguration {
 
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowedOrigins(Arrays.asList("https://web-smart-grade-2rrqq2blmpn233b.sel5.cloudtype.app"));
-        configuration.setAllowedMethods(Arrays.asList("HEAD","POST","GET","DELETE","PUT"));
+        configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
